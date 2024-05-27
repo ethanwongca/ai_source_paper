@@ -1,6 +1,11 @@
 # ai_clinical_trial
  Determining whether a pdf is a clinical trial
 
+# Things to do
+- We want to compare Gemini API, with zero-shot, one-shot, and few-shot prompting 
+- Read papers on prompting and the paper on Gemini API 
+- 1st Goal is to get the zero-shot working 
+
 # Draft 
 # Technology Overview 
 Technologies Outline
