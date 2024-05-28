@@ -2,6 +2,12 @@ import os
 from dotenv import load_dotenv
 import google.generativeai as genai #Genai model 
 
+def check_model():
+    for m in genai.list_models():
+        if 'generateContent' in m.supported_generation_methods:
+            print(m.name)
+
+
 #keeping the data modular
 def intialize_model():
     try:
@@ -30,6 +36,7 @@ def prompt_model(model: str, prompt: str) -> str:
         return None
 
 if __name__ == "__main__":
+    #running tests since this a utils class 
     model = intialize_model() 
     response = prompt_model(model, "Create lyrics inspired by the band Queen")
     print(response)
