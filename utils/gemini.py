@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 import google.generativeai as genai #Genai model 
 
-#keeping ythe data modular
+#keeping the data modular
 def intialize_model():
     try:
         #loading the environment from the .env file 
@@ -21,5 +21,15 @@ def intialize_model():
         print("Error in intializing the model")
         return None
 
+def prompt_model(model: str, prompt: str) -> str:
+    try:
+        response = model.generate_content(prompt)
+        return response.text
+    except Exception as e:
+        print("error in prompting model")
+        return None
+
 if __name__ == "__main__":
-    intialize_model() 
+    model = intialize_model() 
+    response = prompt_model(model, "Create lyrics inspired by the band Queen")
+    print(response)
