@@ -1,9 +1,12 @@
-from grobid_client.grobid_client import GrobidClient 
+from grobid_client.grobid_client import GrobidClient
+import os
 
-class grobid:
+class Grobid:
     def __init__(self):
-        self.client = GrobidClient(config_path='config.json')
+        config_path = os.path.join(os.path.dirname(__file__), 'config.json')
+        print(f"Config path: {config_path}")  # Debugging line to verify path
+        self.client = GrobidClient(config_path=config_path)
         
     def parse(self, pdf_path):
-        response = self.client.process(pdf_path, 'processFulltextDocument')
+        response = self.client.process("processFulltextDocument", pdf_path)
         return response['text']

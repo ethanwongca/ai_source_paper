@@ -1,18 +1,7 @@
 {
   "grobid_server": "http://localhost:8070",
-  "grobid_port": "8070",
-  "batch_size": 100,
+  "batch_size": 1000,
   "sleep_time": 5,
-  "coordinates": ["persName", "figure", "ref", "biblStruct", "formula"],
-  "generateIDs": true,
-  "consolidate_header": false,
-  "consolidate_citations": false,
-  "include_raw_citations": false,
-  "include_raw_affiliations": false,
-  "teim_to_text": false,
-  "segmentation": true,
-  "anonymize_authors": false,
-  "process_vector_models": false
+  "timeout": 60,
+  "coordinates": [ "persName", "figure", "ref", "biblStruct", "formula", "s" ]
 }
-
-  
