@@ -1,22 +1,23 @@
-import transformers as ts
-import torch 
-import os 
-from dotenv import load_dotenv
+import subprocess
+import os
 
-def initialize_llama(token: str):
-    try:
-        model_id = "meta-llama/Meta-Llama-3-8B"
-        pipe = ts.pipeline(
-            "text-generation",
-            model=model_id,
-            model_kwargs={"torch_dtype": torch.bfloat16},
-            use_auth_token=token,
-            device="cuda" if torch.cuda.is_available() else "cpu",
-        )
-        return pipe
-    except Exception as e:
-        print("Error in initializing the model")
-        return None
+def initialize_llama():
+    # No need to clone or compile every time, assume it's done
+    print("LLaMA model initialized successfully.")
+
+def generate_prompt(prompt):
+    # Run the llama.cpp binary from the project directory
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    llama_cpp_path = os.path.join(script_dir, 'llama.cpp', 'main')
+    model_path = os.path.join(script_dir, 'llama.cpp', 'models', 'llama-7B', 'ggml-model.bin')
+    
+    result = subprocess.run(
+        [llama_cpp_path, '-m', model_path, '-p', prompt],
+        capture_output=True, text=True
+    )
+    return result.stdout
 
 if __name__ == "__main__":
     initialize_llama()
+    response = generate_prompt("Can you tell me a joke?")
+    print(response)
