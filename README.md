@@ -1,4 +1,4 @@
-# Gen AI to determine a paper is a source paper
+# Gen AI to determine a paper is a source paper (Proof of Concept)
  Using Gen AI we determine whether or not a paper is a source paper or a literature review. 
 
 ## Languages 
