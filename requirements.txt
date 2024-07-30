@@ -7,7 +7,7 @@ async-timeout==4.0.3
 attrs==21.4.0
 beautifulsoup4==4.12.3
 cachetools==5.3.3
-certifi==2024.2.2
+certifi==2024.07.04
 charset-normalizer==3.3.2
 exceptiongroup==1.2.1
 filelock==3.14.0
